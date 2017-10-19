@@ -1,0 +1,44 @@
+ecshop开发中心技术为您整理，在Ecshop首页商品和商品分类页显示商品已销售数量的方法。
+ecshop首页：
+
+这个需要修改一个程序文件 lib_goods.php
+实现在文件末尾添加一个函数
+
+    function get_buy_sum($goods_id)
+     
+    {
+     
+    $sql = "select sum(goods_number) from " . $GLOBALS['ecs']->table('order_goods') . " AS g ,".$GLOBALS['ecs']->table('order_info') . " AS o WHERE o.order_id=g.order_id and g.goods_id = " . $goods_id . "  and o.order_status=1 "  ;//o.order_status=1 表示确认了的订单才算
+     
+        return $GLOBALS['db']->getOne($sql);
+     
+    }
+
+然后找到 在get_recommend_goods函数中 大致325行
+
+    $goods[$idx]['url']          = build_uri('goods', array('gid' => $row['goods_id']), $row['goods_name']);
+
+其后添加
+
+    $goods[$idx]['buy_num']   = get_buy_sum($row['goods_id']);
+
+剩下的就是通过在模板中用
+{if $goods.buy_num}
+{$goods.buy_num}
+{else}
+0
+{/if}
+调用了 
+
+ECSHOP商品分类页：
+
+修改 category.php 文件
+在
+$arr[$row['goods_id']]['goods_id']         = $row['goods_id'];
+下增加
+$sql="selectNULL(goods_number),0) from ". $GLOBALS['ecs']->table('order_goods') . " AS og , ". $GLOBALS['ecs']->table('order_info') ." AS o where o.order_id =og.order_id and o.order_status >0 and og.goods_id=".$row['goods_id'];
+                $arr[$row['goods_id']]['count_sell']=$GLOBALS['db']->getOne($sql);
+
+然后修改 library/goods_list.lbi
+在你想显示购买数量的地方加入下面代码：
+销售数量：{$goods.count_sell}
