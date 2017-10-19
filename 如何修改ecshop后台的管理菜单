@@ -1,0 +1,30 @@
+如何修改ecshop后台的管理菜单
+商之翼(www.68ecshop.com) / 2014-05-21 / 2966
+ecshop后台菜单如何去修改，下面ecshop开发中心如何去修改
+首先先打开后台菜单项相关文件：
+admin\includes\inc_menu.php
+languages\zh_cn\admin\common.php
+inc_menu.php文件用于管理菜单数量、显示顺序、链接等它是一个2维数组，程序代码为$modules['
+一级分类']['二级分类']=’链接地址’
+管理菜单修改
+打开inc_menu.php，找到：
+修改如下：
+程序代码
+$modules['08_members']['03_users_list']             = 'users.php?act=list';
+$modules['08_members']['04_users_add']              = 'users.php?act=add';
+$modules['08_members']['05_user_rank_list']         = 'user_rank.php?act=list';
+$modules['08_members']['06_list_integrate']         = 'integrate.php?act=list';
+$modules['08_members']['08_unreply_msg']            = 'user_msg.php?act=list_all';
+$modules['08_members']['09_user_account']           = 'user_account.php?act=list';
+$modules['08_members']['10_user_account_manage']    = 'user_account_manage.php?act=list';
+打开common.php，找到：
+程序代码
+/* 会员管理 */
+$_LANG['08_unreply_msg'] = '会员留言';
+$_LANG['03_users_list'] = '会员列表';
+$_LANG['04_users_add'] = '添加会员';
+$_LANG['05_user_rank_list'] = '会员等级';
+$_LANG['06_list_integrate'] = '会员整合';
+$_LANG['09_user_account'] = '充值和提现申请';
+$_LANG['10_user_account_manage'] = '资金管理';
+这个只是举例说明如何去修改菜单，都是一一对应的
