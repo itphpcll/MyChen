@@ -1,1 +1,23 @@
 http://www.68ecshop.com/article_cat-53-2.html
+
+https://pecl.php.net/package/redis/2.2.7/windows redis官网
+
+https://gitee.com/lea21st/leacmf  码农 后台框架
+
+http://www.cnblogs.com/Wtingting/p/7055573.html  ecshop_dwt_lbi模板添加
+
+
+http://61.164.161.42:8080/admin_manage/index.php  chenlanlan    密码  cll123456
+
+http://61.164.161.42:8080/admin/index.php 万国优品  yushen11
+
+http://服务器ip:81/svn/YuShen/  ys 密码 weixiao
+
+参考网站网址：
+http://www.fengqu.com 丰趣海淘
+
+http://www.yiguo.com/  易果生鲜
+
+http://www.yiyunoto.com/   移云商城ecshop开发
+
+http://www.jiathis.com/  分享按钮
