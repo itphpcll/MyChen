@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>areas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- introduce css file -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <!-- introduce jquery file -->
+    <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+    <!-- introduce js file -->
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+    //Access to provincial information
+    function showProvince(){
+        $.ajax({
+            url: './select.php',
+            type: 'POST',
+            dataType: 'json',
+            success:function(msg){
+                // console.log(msg);
+                $(msg).each(function(n,v){
+                    // console.log(name);
+                    $('#Province').append("<option value='"+v.id+"'>"+v.name+"</option>");
+                });
+            }
+        });
+        
+    }
+    function showCity(){
+       
+    }
+    
+    //获取地区信息
+    function showPiecearea(){
+        
+    }
+    //$('#shengfen').addEventListener('change',showCity);
+    //使用封装好的页面加载函数
+    $(function(){
+        showProvince();
+       
+    });
+
+    </script>
+    </head>
+<body>
+
+<div class="form-group">
+                <div class="col-sm-1 text-center">
+                   省
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" name="Province" id="Province">
+                        <option>==请选择===</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-1 text-center">
+                   市
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" name="City" id="City">
+                        <option>==请选择===</option>
+                    </select>
+                </div>
+                <div class="col-sm-1 text-center">
+                县/区
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control" name="Village" id="Village">
+                        <option>==请选择===</option>
+                    </select>
+                </div>
+            </div>
+
+</body>
+</html>
